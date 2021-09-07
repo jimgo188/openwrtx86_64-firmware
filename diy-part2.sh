@@ -16,6 +16,6 @@
 rm -rf package/lean/luci-app-netdata
 # add chajian
 git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
-git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+# git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 git clone https://github.com/jimgo188/op.git package/op
 git clone -b files https://github.com/jimgo188/op.git files
