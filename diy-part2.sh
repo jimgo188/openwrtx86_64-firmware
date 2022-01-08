@@ -24,3 +24,4 @@ git clone https://github.com/iwrt/luci-app-ikoolproxy.git package/luci-app-ikool
 git clone https://github.com/jimgo188/op.git package/op
 git clone -b files https://github.com/jimgo188/op.git files
 git clone https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git luci-theme-argon-18.06
