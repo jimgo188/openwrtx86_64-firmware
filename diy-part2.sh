@@ -15,9 +15,9 @@ sed -i 's/192.168.1.1/192.168.50.1/g' package/base-files/files/bin/config_genera
 # Modify default Kernel
 sed -i '13s/5.10/5.4/g' target/linux/x86/Makefile
 #delete netdate
-rm -rf package/lean/luci-app-netdata
+rm -rf feeds/luci/applications/luci-app-netdata
 #delete wrtbwmon
-rm -rf package/lean/luci-app-wrtbwmon
+rm -rf feeds/luci/applications/luci-app-wrtbwmon
 # add chajian
 git clone https://github.com/iwrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 # git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
