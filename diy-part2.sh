@@ -17,7 +17,7 @@ sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=5.4/g' target/linux/x86/Makefil
 #delete netdate
 rm -rf feeds/luci/applications/luci-app-netdata
 #delete wrtbwmon
-rm -rf feeds/luci/applications/luci-app-wrtbwmon
+#rm -rf feeds/luci/applications/luci-app-wrtbwmon
 # add chajian
 git clone https://github.com/iwrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 # git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
