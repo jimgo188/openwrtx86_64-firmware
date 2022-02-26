@@ -13,7 +13,7 @@
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.50.1/g' package/base-files/files/bin/config_generate
 # Modify default Kernel
-sed -i '13s/5.10/5.4/g' target/linux/x86/Makefile
+sed -i '13s/5.15/5.4/g' target/linux/x86/Makefile
 #delete netdate
 rm -rf feeds/luci/applications/luci-app-netdata
 #delete wrtbwmon
