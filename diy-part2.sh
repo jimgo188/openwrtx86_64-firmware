@@ -25,4 +25,4 @@ rm -rf feeds/luci/applications/luci-app-netdata
 git clone -b files https://github.com/jimgo188/op-package files
 # git clone https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
 git clone https://github.com/kenzok8/small-package package/small-package
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-18.06
+# git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-18.06
