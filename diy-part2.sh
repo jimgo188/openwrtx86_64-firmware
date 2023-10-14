@@ -33,3 +33,11 @@ git clone https://github.com/eerrjjkk/luci-app-vnstat2.git package/luci-app-vnst
 # rm -rf feeds/luci/applications/luci-app-mosdns
 # rm -rf feeds/packages/net/mosdns
 # git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
+mkdir package/luci-app-openclash
+cd package/luci-app-openclash
+git init
+git remote add -f origin https://github.com/vernesong/OpenClash.git
+git config core.sparsecheckout true
+echo "luci-app-openclash" >> .git/info/sparse-checkout
+git pull --depth 1 origin master
+git branch --set-upstream-to=origin/master master
