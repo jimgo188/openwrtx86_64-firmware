@@ -41,6 +41,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main # actions/checkout@v3
 
+    - name: Disk space
+      run: |
+           echo "Free space:"
+           df -h
+
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
