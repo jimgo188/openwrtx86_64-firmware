@@ -41,25 +41,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main # actions/checkout@v3
 
-    - name: Before freeing up disk space
-      run: |
-           echo "Before freeing up disk space:"
-           df -h
-
-    - name: Optimize Disk SPACE
-      run: |
-           echo "Optimize Disk SPACE:"
-           Optimize Disk SPACE
-
-    - name: Freeing up disk space
-      run: |
-           echo "Freeing up disk space:"
-           Freeing up disk space
-           
-    - name: Free up disk space complete
-      run: |
-           echo "Free up disk space complete:"
-           df -h
 
     - name: Initialization environment
       env:
