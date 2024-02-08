@@ -46,6 +46,11 @@ jobs:
            echo "Free space:"
            df -h
 
+    - name: Disk space
+      run: |
+           echo "Free up disk space complete:"
+           df -h
+
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
