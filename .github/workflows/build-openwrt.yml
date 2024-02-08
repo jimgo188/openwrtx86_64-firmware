@@ -44,14 +44,17 @@ jobs:
     - name: Before freeing up disk space
       run: |
            echo "Before freeing up disk space:"
+           df -h
            
     - name: Optimize Disk SPACE
       run: |
            echo "Optimize Disk SPACE:"
+           df -h
 
     - name: Freeing up disk space
       run: |
            echo "Freeing up disk space:"
+           df -h
            
     - name: Disk space
       run: |
