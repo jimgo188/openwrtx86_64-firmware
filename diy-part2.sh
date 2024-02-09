@@ -32,3 +32,8 @@ git clone https://github.com/eerrjjkk/luci-app-vnstat2.git package/luci-app-vnst
 # rm -rf feeds/luci/applications/luci-app-mosdns
 # rm -rf feeds/packages/net/mosdns
 # git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
+# ==========openclash===========
+cd package
+git clone --depth=1 --filter=blob:none --sparse https://github.com/vernesong/OpenClash.git
+cd OpenClash
+git sparse-checkout set luci-app-openclash
