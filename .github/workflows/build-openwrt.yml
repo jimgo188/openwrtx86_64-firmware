@@ -108,8 +108,16 @@ jobs:
         cd openwrt/package    
         git clone -b dev https://github.com/Blueplanet20120/luci-app-romupdate.git
     
+    #- name: luci-theme-argon
+      #run: |
+        #cd openwrt/package/lean
+        #rm -rf luci-theme-argon
+        #git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git luci-theme-argon
         
-    
+    - name: aliyundrive-webdav
+      run: |
+        cd openwrt/package 
+        git clone https://github.com/messense/aliyundrive-webdav.git
        
     - name: luci-app-frpc
       run: |
@@ -123,6 +131,12 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
         
+   
+    - name: lenyu
+      run: |
+        cd openwrt 
+        bash  lenyu.sh
+
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -222,6 +236,16 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
         echo "release_tag=$(cat openwrt/wget/op_version1)" >> $GITHUB_OUTPUT
+        git -C openwrt log --pretty=format:"%s(#By %an)"  --graph --since=3.hour >> release.txt
+        git -C openwrt/feeds/packages log --pretty=format:"%s(#By %an)"  --graph --since=3.hour >> release.txt
+        git -C openwrt/feeds/luci log --pretty=format:"%s(#By %an)"  --graph --since=3.hour >> release.txt
+        git -C openwrt/feeds/routing log --pretty=format:"%s(#By %an)"  --graph --since=3.hour >> release.txt
+        git -C openwrt/feeds/telephony log --pretty=format:"%s(#By %an)"  --graph --since=3.hour >> release.txt
+        git -C openwrt/feeds/helloworld log --pretty=format:"%s(#By %an)"  --graph --since=4.hour >> release.txt
+        git -C openwrt/feeds/passwall log --pretty=format:"%s(#By %an)"  --graph --since=8.hour >> release.txt
+        git -C openwrt/package/luci-app-openclash log --pretty=format:"%s(#By %an)"  --graph --since=8.hour >> release.txt
+        test  ! -s release.txt && echo -e "\n* The source code is not updated." >> release.txt
+        sed -i '1i ## Firmware Update Log' release.txt
         touch release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
@@ -240,14 +264,14 @@ jobs:
     - name: Delete workflow runs
       uses: Lenyu2020/delete-workflow-runs@main
       with:
-        retain_days: 3
-        keep_minimum_runs: 3
+        retain_days: 1
+        keep_minimum_runs: 5
 
     - name: Remove old Releases
       uses: dev-drprasad/delete-older-releases@master
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
-        keep_latest: 5
+        keep_latest: 10
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
