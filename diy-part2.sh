@@ -30,6 +30,7 @@ git clone -b files https://github.com/jimgo188/op-package files
 # git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 git clone https://github.com/eerrjjkk/luci-app-vnstat2.git package/luci-app-vnstat2
 git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
+git clone https://github.com/sirpdboy/luci-app-lucky.git package/luci-app-lucky
 # rm -rf feeds/luci/applications/luci-app-mosdns
 # rm -rf feeds/packages/net/mosdns
 # git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
