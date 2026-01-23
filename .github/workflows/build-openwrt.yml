@@ -158,14 +158,7 @@ jobs:
       with:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
-        files: |
-          ${{ env.FIRMWARE }}/*.bin
-          ${{ env.FIRMWARE }}/*combined*.img.gz
-          ${{ env.FIRMWARE }}/*squashfs*.img.gz
-          ${{ env.FIRMWARE }}/*kernel.bin
-          ${{ env.FIRMWARE }}/*rootfs.tar.gz
-          # 如果你还想要其他特定格式，可以继续加
-          # 不要加 *.img 这种通配，因为 pv.img 也是 .img
+        files: ${{ env.FIRMWARE }}/*
     
 
     - name: Delete workflow runs
