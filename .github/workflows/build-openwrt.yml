@@ -133,38 +133,7 @@ jobs:
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
-    # 新增：只保留 3 个文件，删除其他所有
-    - name: Prepare minimal files for release
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      run: |
-        cd ${{ env.FIRMWARE }}
-
-        # 匹配主固件文件（x86-64 的 squashfs-combined-efi.img.gz）
-        FIRMWARE_FILE=$(ls -1 *x86-64*generic*squashfs*combined*efi.img.gz 2>/dev/null | head -n1)
-
-        if [ -z "$FIRMWARE_FILE" ]; then
-          echo "Error: No *-squashfs-combined-efi.img.gz found in ${{ env.FIRMWARE }}"
-          ls -la
-          exit 1
-        fi
-
-        echo "Selected firmware: $FIRMWARE_FILE"
-
-        # 复制 config 和 feeds 并重命名
-        cp ../../../.config               config.buildinfo  2>/dev/null || echo "Warning: .config not found"
-        cp ../../../feeds.conf.default    feeds.buildinfo   2>/dev/null || \
-        cp ../../../feeds.conf            feeds.buildinfo   2>/dev/null || echo "Warning: feeds.conf not found"
-
-        # 删除除这 3 个文件外的所有内容
-        find . -type f -not -name "$FIRMWARE_FILE" \
-                       -not -name "config.buildinfo" \
-                       -not -name "feeds.buildinfo" \
-                       -delete
-
-        # 清理空目录（可选）
-        find . -type d -empty -delete
-
-        ls -lh
+    
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
